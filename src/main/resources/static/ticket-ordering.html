@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordering ticket</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="ordering.js"></script>
+</head>
+<body>
+<h1>Ordering of tickets</h1>
+
+<!--Table with all inputs with labels -->
+<table>
+    <tr>
+        <td>
+            <label for="movie">Select movie:</label>
+        </td>
+        <td>
+            <select id="movie">
+                <option>Select a movie</option>
+                <option>Napoleon</option>
+                <option>Birdman</option>
+                <option>Max Manus</option>
+            </select> <span id="movieCheck"></span>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="ticketNr">Number of tickets:</label></td>
+        <td><input size="1" maxlength="3" value="0" type="text" id="ticketNr"> <span id="ticketNrCheck"></span></td>
+    </tr>
+    <tr>
+        <td><label for="fName">First name:</label></td>
+        <td><input type="text" id="fName"> <span id="fNameCheck"></span></td>
+    </tr>
+    <tr>
+        <td><label for="lName">Last name:</label></td>
+        <td><input type="text" id="lName"> <span id="lNameCheck"></span></td>
+    </tr>
+    <tr>
+        <td><label for="phoneNr">Phone number:</label> </td>
+        <td><input type="text" id="phoneNr"> <span id="phoneNrCheck"></span></td>
+    </tr>
+    <tr>
+        <td><label for="email">Email:</label> </td>
+        <td><input type="email" id="email"> <span id="emailCheck"></span></td>
+    </tr>
+</table>
+<button onclick="buyTicket()">Buy ticket</button>
+
+<!--Table with all tickets -->
+<h2>All tickets</h2>
+<div id="all tickets"></div>
+
+
+<button onclick="deleteTickets()">Delete all tickets</button>
+</body>
+</html>
