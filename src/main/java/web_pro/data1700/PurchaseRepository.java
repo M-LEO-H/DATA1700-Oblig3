@@ -2,6 +2,7 @@ package web_pro.data1700;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,12 +23,15 @@ public class PurchaseRepository {
                 purchase.getlName(), purchase.getPhoneNr(), purchase.getEmail());
     }
     public List<Purchase> getAllPurchases(){
-        List<Purchase> listPurchases;
-        return listPurchases;
+
+        String sql = "select * from Purchases";
+
+        return db.query(sql, new BeanPropertyRowMapper(Purchase.class));
     }
 
     public void deleteAllPurchases(){
-
+        String sql = "delete from Purchases";
+        db.update(sql);
     }
 
 

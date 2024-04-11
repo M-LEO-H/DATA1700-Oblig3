@@ -5,7 +5,7 @@ public class Purchase {
     String numberOfTickets;
     String fName;
     String lName;
-    String phoneNr;
+    String phoneNumber;
     String email;
 
     public Purchase(String movie, String numberOfTickets, String fName, String lName, String phoneNr, String email) {
@@ -13,7 +13,7 @@ public class Purchase {
         this.numberOfTickets = numberOfTickets;
         this.fName = fName;
         this.lName = lName;
-        this.phoneNr = phoneNr;
+        this.phoneNumber = phoneNr;
         this.email = email;
     }
 
@@ -50,11 +50,11 @@ public class Purchase {
     }
 
     public String getPhoneNr() {
-        return phoneNr;
+        return phoneNumber;
     }
 
-    public void setPhoneNr(String phoneNr) {
-        this.phoneNr = phoneNr;
+    public void setPhoneumber(String phoneNr) {
+        this.phoneNumber = phoneNr;
     }
 
     public String getEmail() {

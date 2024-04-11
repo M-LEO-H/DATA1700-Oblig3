@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordering ticket</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="index.js"></script>
+</head>
+<body>
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Ordering of tickets</h1>
+            <form class="form">
+
+                <div class="form-group">
+                    <label for="movie-div">Select movie</label>
+                    <div id="movie-div">
+                        <select id="movie">
+                            <option>--Select movie--</option>
+                            <option>Napoleon</option>
+                            <option>Birdman</option>
+                            <option>Max Manus</option>
+                        </select>
+                    </div>
+                    <span id="movie-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketNr">Number of tickets:</label>
+                    <input type="text" id="ticketNr" class="form-control">
+                    <span id="ticketNr-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="fName">First name:</label>
+                    <input type="text" id="fName" class="form-control">
+                    <span id="fName-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="lName">Last name:</label>
+                    <input type="text" id="lName" class="form-control">
+                    <span id="lName-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNr">Phone number:</label>
+                    <input type="text" id="phoneNr" class="form-control">
+                    <span id="phoneNr-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control">
+                    <span id="email-error"></span>
+                </div>
+            </form>
+            <button onclick="purchase()">Please work</button>
+            <button class="btn btn-primary" onclick="purchase()">Buy ticket</button>
+        </div>
+        <div class="col-md-8">
+            <h2>All tickets: </h2>
+            <div id="all tickets"></div>
+            <button class="btn btn-danger"  onclick="deleteTickets()">Delete all tickets</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
