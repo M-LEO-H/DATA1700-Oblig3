@@ -18,7 +18,7 @@ public class PurchaseRepository {
     private JdbcTemplate db;
 
     public void savePurchase(Purchase purchase){
-        String sql = "insert into Purchases(movie, numberOfTickets, fName, lName, phoneNr, email) values (?,?,?,?,?,?)";
+        String sql = "insert into Purchases(movie, numberOfTickets, fName, lName, phoneNumber, email) values (?,?,?,?,?,?)";
         db.update(sql, purchase.getMovie(), purchase.getNumberOfTickets(), purchase.getfName(),
                 purchase.getlName(), purchase.getPhoneNr(), purchase.getEmail());
     }

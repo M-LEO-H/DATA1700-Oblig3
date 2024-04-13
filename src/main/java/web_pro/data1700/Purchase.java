@@ -8,12 +8,14 @@ public class Purchase {
     String phoneNumber;
     String email;
 
-    public Purchase(String movie, String numberOfTickets, String fName, String lName, String phoneNr, String email) {
+
+
+    public Purchase(String movie, String numberOfTickets, String fName, String lName, String phoneNumber, String email) {
         this.movie = movie;
         this.numberOfTickets = numberOfTickets;
         this.fName = fName;
         this.lName = lName;
-        this.phoneNumber = phoneNr;
+        this.phoneNumber = phoneNumber;
         this.email = email;
     }
 

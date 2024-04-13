@@ -6,17 +6,19 @@
  *          display
  *
  */
-
+$(function (){
+    validation($("#fName").val(), "First name");
+})
 
 
 function purchase() {
     //Variables
-    const film = $("#movie").val;
-    const ticketNr = $("#ticketNr").val;
-    const firstName = $("#fName").val;
-    const lastName = $("#lName").val;
-    const phoneNr = $("#phoneNr").val;
-    const testEmail = $("#email").val;
+    const film = $("#movie").val();
+    const ticketNr = $("#ticketNr").val();
+    const firstName = $("#fName").val();
+    const lastName = $("#lName").val();
+    const phoneNr = $("#phoneNr").val();
+    const testEmail = $("#email").val();
 
     let correct = validation(film, "Movie") * validation(ticketNr, "Ticket number") *
         validation(firstName, "First name") * validation(lastName, "Last name") *
@@ -86,12 +88,27 @@ function validation(data, span){
         $(error).html("Må velge en " + span_lc + ".");
         return false;
     }
-    for (const ptrn in patterns){
+    if (span === "First Name" || span === "Last Name"){
+        if(!namePattern.test(data)){
+            return false;
+        }
+    }
+    if(span === "Phone number"){
+        if (!phonePattern.test(data)){
+            return false;
+        }
+    }
+    if(span === "Email"){
+        if (!emailPattern.test(data)){
+            return false;
+        }
+    }
+    /*for (const ptrn in patterns){
         if (!ptrn.match(data)){
             $(error).html(span + " is not valid")
             return false;
         }
-    }
+    }*/
 
     $(error).html("");
     return true;            // No need for "else" because this line will only be reached if all is good.
