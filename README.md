@@ -9,8 +9,4 @@
 *Fullt navn* : Mathias Leo Holien
 
 *Beskrivelse*: 
-The website gets the values from the inputs from the user, validates them, and if correct stores the 'purchase' in a database,
-where the obj goes from user -> server -> database. If the inputs are not valid, error messages are displayed top the user who can
-try again until correct. There are different messages dependent on the type of error. When the purchase is stored it is displayed in a
-table to the user, where it is ordered by Last name. The user can add more purchases or delete all purchase in the table.
-Everything is visualized ("styled") with  bootstrap.
+The website gets the values from the inputs from the user, validates them, and if correct stores the 'purchase' in a database, where the obj goes from user -> server -> database. If the inputs are not valid, error messages are displayed to the user who can try again until correct. There are different messages dependent on the type of error. When the purchase is stored, it is displayed in a table to the user, where it is ordered by Last name. The user can add more purchases or delete all purchases in the table. Everything is visualized ("styled") with bootstrap.
