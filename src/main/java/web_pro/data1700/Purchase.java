@@ -1,12 +1,12 @@
 package web_pro.data1700;
 
 public class Purchase {
-    String movie;
-    String numberOfTickets;
-    String fName;
-    String lName;
-    String phoneNumber;
-    String email;
+        String movie;
+        String numberOfTickets;
+        String fName;
+        String lName;
+        String phoneNumber;
+        String email;
 
 
 
@@ -18,6 +18,7 @@ public class Purchase {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+    public Purchase(){}
 
     public String getMovie() {
         return movie;

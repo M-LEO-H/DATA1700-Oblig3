@@ -1,13 +1,10 @@
 /**
  * TO DO:
- *      - see over regex checker, cannot be a loop --> find another solution
- *      - see other faults and bug fix
- *      - if time create a nother pojo file for movies and use the readyfunction to
- *          display
+ *      - PhoneNr is not registering in savePurchase, or something in that manner
  *
  */
 $(function (){
-    validation($("#fName").val(), "First name");
+    validation($("#ticketNr").val())
 })
 
 
@@ -20,9 +17,9 @@ function purchase() {
     const phoneNr = $("#phoneNr").val();
     const testEmail = $("#email").val();
 
-    let correct = validation(film, "Movie") * validation(ticketNr, "Ticket number") *
-        validation(firstName, "First name") * validation(lastName, "Last name") *
-        validation(phoneNr, "Phone number") * validation(testEmail, "Email");
+    let correct = validation(film, "Movie") * validation(ticketNr, "ticket-number") *
+        validation(firstName, "first-name") * validation(lastName, "last-name") *
+        validation(phoneNr, "phone-number") * validation(testEmail, "Email");
 
     if (correct) {
         const purchase = {
@@ -48,7 +45,7 @@ function purchase() {
  *   Date: last updated 15. April 2021
  *   Availability: https://github.com/anafvana/SQL1-Kodegjennomgang
  *
- *  Original code is modified and/or translated. Depend code on this function
+ *  Original code is modified and/or translated. Code depended on this function
  *  are imitating the authors naming and solution
  *  --------------------------------------------------------------------------
  *
@@ -58,21 +55,21 @@ function purchase() {
  */
 function validation(data, span){
     /**
-     * RegEx code:
+     * RegEx code for Phone & Email:
      *      Tittle: Regular Expressions (RegEx) Tutorial #15 - Email RegEx Pattern
      *      Author: Net Ninja
      *      Date: 5. March 2018
      *      Available: https://www.youtube.com/watch?v=QxjAOSUQjP0
      *
-     *      A more comprehensive email pattern you could use the one provided by
-     *      the community user Tripleaxis
-     *      Available: https://regexr.com/2rhq7
+     * RegExp code for Name:
+     *      Author, community user: gskinner
+     *      Available: https://regexr.com/3f8cm
+     *      *Code is modified
      */
-    const namePattern = /^[a-z]+$/g
+    const namePattern = /\b([a-zA-ZÀ-ÿ][-,a-z. ']+[ ]*)+/
     const phonePattern = /^\d{8}$/g
     const emailPattern = /^([a-z\d_]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/g
 
-    let patterns = [namePattern, phonePattern, emailPattern];
 
 
 
@@ -85,30 +82,33 @@ function validation(data, span){
         return false;
     }
     if (data === ("--Select " + span_lc + "--")){
-        $(error).html("Må velge en " + span_lc + ".");
+        $(error).html("Must select a " + span_lc + ".");
         return false;
     }
-    if (span === "First Name" || span === "Last Name"){
+    if (span === "first-name" || span === "last-name"){
         if(!namePattern.test(data)){
+            $(error).html("Name is not valid");
             return false;
         }
     }
-    if(span === "Phone number"){
+    if(span === "phone-number"){
         if (!phonePattern.test(data)){
+            $(error).html("Phone number is not valid");
             return false;
         }
     }
     if(span === "Email"){
         if (!emailPattern.test(data)){
+            $(error).html("Email is not valid");
             return false;
         }
     }
-    /*for (const ptrn in patterns){
-        if (!ptrn.match(data)){
-            $(error).html(span + " is not valid")
-            return false;
+    if(span === "ticket-number"){
+        if (isNaN(Number(data)) || data < 1){
+            $(error).html("Not a number or not above 0");
+            return false
         }
-    }*/
+    }
 
     $(error).html("");
     return true;            // No need for "else" because this line will only be reached if all is good.
@@ -116,16 +116,16 @@ function validation(data, span){
 
 function getAll(){
     $.get("/getAll", function (purchase){
-        let ut = "<table><tr>" +
-            "<th>Movie</th><th>total tickets</th><th>First name</th><th>Last name</th><th>Phone number</th><th>email</th>" +
+        let out = "<table class='table'><tr>" +
+            "<th>Last Name</th><th>First Name</th><th>Phone number</th><th>Email</th><th>Movie</th><th>Number of Tickets</th>" +
             "</tr>";
         for (let p of purchase){
-            ut+="<tr>";
-            ut+="<td>"+p.movieTitle+"</td><td>"+p.ticketAmount+"</td><td>"+p.firstName+"</td><td>"+p.lastName+"</td>" +
-                "<td>"+p.phoneNumber+"</td><td>"+p.email+"</td>";
-            ut+="</tr>";
+            out+="<tr>";
+            out+="<td>"+p.lName+"</td><td>"+p.fName+"</td><td>"+p.phoneNumber+"</td><td>"+p.email+"</td>" +
+                "<td>"+p.movie+"</td><td>"+p.numberOfTickets+"</td>";
+            out+="</tr>";
         }
-        document.getElementById("all tickets").innerHTML=ut;
+        document.getElementById("all tickets").innerHTML=out;
     })
 }
 

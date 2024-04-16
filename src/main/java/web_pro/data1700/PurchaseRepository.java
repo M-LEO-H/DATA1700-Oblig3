@@ -6,10 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 @Repository
 public class PurchaseRepository {
@@ -24,9 +21,9 @@ public class PurchaseRepository {
     }
     public List<Purchase> getAllPurchases(){
 
-        String sql = "select * from Purchases";
+        String sql = "select * from Purchases order by lName";
 
-        return db.query(sql, new BeanPropertyRowMapper(Purchase.class));
+        return db.query(sql, new BeanPropertyRowMapper<>(Purchase.class));
     }
 
     public void deleteAllPurchases(){
