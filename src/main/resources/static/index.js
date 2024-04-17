@@ -1,12 +1,3 @@
-/**
- * TO DO:
- *      - PhoneNr is not registering in savePurchase, or something in that manner
- *
- */
-$(function (){
-    validation($("#ticketNr").val())
-})
-
 
 function purchase() {
     //Variables
@@ -29,9 +20,10 @@ function purchase() {
             lName: lastName,
             phoneNumber: phoneNr,
             email: testEmail
-        }
+        };
         $.post("/savePurchase", purchase, function () {
             getAll();
+
         });
         reset();
     }
@@ -62,11 +54,10 @@ function validation(data, span){
      *      Available: https://www.youtube.com/watch?v=QxjAOSUQjP0
      *
      * RegExp code for Name:
-     *      Author, community user: gskinner
-     *      Available: https://regexr.com/3f8cm
-     *      *Code is modified
+     *      Questioned answered by: maček
+     *      Available: https://stackoverflow.com/questions/2385701/regular-expression-for-first-and-last-name
      */
-    const namePattern = /\b([a-zA-ZÀ-ÿ][-,a-z. ']+[ ]*)+/
+    const namePattern = /^[a-z ,.'-]+$/i
     const phonePattern = /^\d{8}$/g
     const emailPattern = /^([a-z\d_]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/g
 
@@ -121,7 +112,7 @@ function getAll(){
             "</tr>";
         for (let p of purchase){
             out+="<tr>";
-            out+="<td>"+p.lName+"</td><td>"+p.fName+"</td><td>"+p.phoneNumber+"</td><td>"+p.email+"</td>" +
+            out+="<td>"+p.lName+"</td><td>"+p.fName+"</td><td>"+p.phoneNr+"</td><td>"+p.email+"</td>" +
                 "<td>"+p.movie+"</td><td>"+p.numberOfTickets+"</td>";
             out+="</tr>";
         }

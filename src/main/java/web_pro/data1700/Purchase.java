@@ -56,8 +56,8 @@ public class Purchase {
         return phoneNumber;
     }
 
-    public void setPhoneumber(String phoneNr) {
-        this.phoneNumber = phoneNr;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -66,5 +66,17 @@ public class Purchase {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "movie='" + movie + '\'' +
+                ", numberOfTickets='" + numberOfTickets + '\'' +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
