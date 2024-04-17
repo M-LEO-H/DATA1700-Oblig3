@@ -1,4 +1,6 @@
-
+/**
+ * Gets all values from user, validates them then stores
+ */
 function purchase() {
     //Variables
     const film = $("#movie").val();
@@ -57,11 +59,10 @@ function validation(data, span){
      *      Questioned answered by: maček
      *      Available: https://stackoverflow.com/questions/2385701/regular-expression-for-first-and-last-name
      */
+
     const namePattern = /^[a-z ,.'-]+$/i
     const phonePattern = /^\d{8}$/g
     const emailPattern = /^([a-z\d_]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/g
-
-
 
 
     // A couple of variables to avoid repetition

@@ -1,12 +1,9 @@
 package web_pro.data1700;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
 
 @Repository
@@ -29,6 +26,4 @@ public class PurchaseRepository {
         String sql = "delete from Purchases";
         db.update(sql);
     }
-
-
 }

@@ -8,8 +8,6 @@ public class Purchase {
         String phoneNumber;
         String email;
 
-
-
     public Purchase(String movie, String numberOfTickets, String fName, String lName, String phoneNumber, String email) {
         this.movie = movie;
         this.numberOfTickets = numberOfTickets;
@@ -18,6 +16,7 @@ public class Purchase {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
     public Purchase(){}
 
     public String getMovie() {
@@ -66,17 +65,5 @@ public class Purchase {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Purchase{" +
-                "movie='" + movie + '\'' +
-                ", numberOfTickets='" + numberOfTickets + '\'' +
-                ", fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 }
