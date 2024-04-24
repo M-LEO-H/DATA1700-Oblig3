@@ -18,9 +18,6 @@ public class PurchaseRepository {
                 purchase.getlName(), purchase.getPhoneNumber(), purchase.getEmail());
     }
     public void changePurchase(Purchase purchase){
-        System.out.println("testing");
-        System.out.println(purchase.getNumberOfTickets());
-        System.out.println(purchase.getId());
         String sql = "UPDATE Purchases set movie=?, numberOfTickets=?,fName=?, lName=?, phoneNumber=?, email=? where id=?";
         db.update(sql, purchase.getMovie(), purchase.getNumberOfTickets(), purchase.getfName(), purchase.getlName(), purchase.getPhoneNumber(), purchase.getEmail(), purchase.getId());
     }

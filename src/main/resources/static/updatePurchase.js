@@ -14,7 +14,9 @@ $(function (){
 })
 
 
-
+/**
+ * Reads new values from user, validates them, then updates the purchase with id.
+ */
 function changePurchase() {
     const film = $("#movie").val();
     const ticketNr = $("#ticketNr").val();
