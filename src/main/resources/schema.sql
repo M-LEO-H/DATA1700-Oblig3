@@ -1,5 +1,6 @@
 create table Purchases
 (
+    id int auto_increment ,
     movie varchar(255),
     numberOfTickets varchar(255),
     fName varchar(255),

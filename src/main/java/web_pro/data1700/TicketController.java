@@ -16,10 +16,23 @@ public class TicketController {
     public void savePurchase(Purchase purchase){
         rep.savePurchase(purchase);
     }
+    @PostMapping("/changePurchase")
+    public void changePurchase(Purchase purchase){
+        rep.changePurchase(purchase);
+    }
 
     @GetMapping("/getAll")
     public List<Purchase> getAll(){
         return rep.getAllPurchases();
+    }
+    @GetMapping("/getOnePurchase")
+        public Purchase getOnePurchase ( int id){
+            return rep.getOnePurchase(id);
+        }
+
+    @GetMapping("/deleteOnePurchase")
+    public void deleteOnePurchase(int id){
+        rep.deleteOnePurchase(id);
     }
 
     @PostMapping("/deleteAll")

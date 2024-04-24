@@ -7,14 +7,16 @@ public class Purchase {
         String lName;
         String phoneNumber;
         String email;
+        int id;
 
-    public Purchase(String movie, String numberOfTickets, String fName, String lName, String phoneNumber, String email) {
+    public Purchase(String movie, String numberOfTickets, String fName, String lName, String phoneNumber, String email, int id) {
         this.movie = movie;
         this.numberOfTickets = numberOfTickets;
         this.fName = fName;
         this.lName = lName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.id = id;
     }
 
     public Purchase(){}
@@ -51,7 +53,7 @@ public class Purchase {
         this.lName = lName;
     }
 
-    public String getPhoneNr() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -66,4 +68,13 @@ public class Purchase {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
+

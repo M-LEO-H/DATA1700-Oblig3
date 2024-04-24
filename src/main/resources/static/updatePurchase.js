@@ -1,13 +1,21 @@
-/**
- * Gets all values from user, validates them then stores
- */
-
-
 $(function (){
-    getAll();
+    const id = window.location.search.substring(1);
+    const url = "/getOnePurchase?" +id;
+    $.get(url, function (purchase) {
+        console.log(purchase.id);
+        $("#id").val(purchase.id);
+        $("#movie").val(purchase.movie);
+        $("#ticketNr").val(purchase.numberOfTickets);
+        $("#fName").val(purchase.fName);
+        $("#lName").val(purchase.lName);
+        $("#phoneNr").val(purchase.phoneNumber);
+        $("#email").val(purchase.email);
+    })
 })
-function purchase() {
-    //Variables
+
+
+
+function changePurchase() {
     const film = $("#movie").val();
     const ticketNr = $("#ticketNr").val();
     const firstName = $("#fName").val();
@@ -19,21 +27,21 @@ function purchase() {
         validation(firstName, "first-name") * validation(lastName, "last-name") *
         validation(phoneNr, "phone-number") * validation(testEmail, "Email");
 
-    if (correct) {
+    if (correct){
         const purchase = {
+            id : $("#id").val(),
             movie: film,
             numberOfTickets: ticketNr,
             fName: firstName,
             lName: lastName,
             phoneNumber: phoneNr,
             email: testEmail
-        };
-        $.post("/savePurchase", purchase, function () {
-            getAll();
-
+        }
+        $.post("/changePurchase", purchase, function () {
+            window.location.href="index.html";
         });
-        reset();
     }
+
 }
 
 
@@ -111,51 +119,3 @@ function validation(data, span){
     return true;            // No need for "else" because this line will only be reached if all is good.
 }
 
-function getAll(){
-    $.get("/getAll", function (purchase){
-        formatPurchase(purchase)
-    })
-}
-
-function formatPurchase(purchase){
-    let out = "<table class='table'><tr>" +
-        "<th>Last Name</th><th>First Name</th><th>Phone number</th><th>Email</th><th>Movie</th><th>Number of Tickets</th>" +
-        "</tr>";
-    for (let p of purchase){
-        out+="<tr>";
-        out+="<td>"+p.lName+"</td><td>"+p.fName+"</td><td>"+p.phoneNumber+"</td><td>"+p.email+"</td>" +
-            "<td>"+p.movie+"</td><td>"+p.numberOfTickets+"</td>";
-        out += "<td> <a class='btn btn-primary' href='updatePurchase.html?id="+p.id+"'>Update</a></td>"+
-            "<td> <button class='btn btn-danger' onclick='deleteOnePurchase("+p.id+")'>Delete</button> </td>";
-        out+="</tr>";
-        console.log(p.id)
-    }
-    document.getElementById("all tickets").innerHTML=out;
-}
-
-
-
-//Reset function of all inputs
-function reset(){
-    document.getElementById("movie").value = "--Select movie--";
-    document.getElementById("ticketNr").value = "0";
-    document.getElementById("fName").value = "";
-    document.getElementById("lName").value = "";
-    document.getElementById("phoneNr").value = "";
-    document.getElementById("email").value = "";
-}
-
-
-function deleteOnePurchase(id){
-    const url = "/deleteOnePurchase?id=" + id;
-    $.get(url, function (){
-        getAll();
-    })
-}
-
-function deleteTickets(){
-    $.post("/deleteAll", function (){
-        console.log("deleting one")
-        getAll();
-    });
-}
